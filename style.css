@@ -167,6 +167,62 @@ footer p {
     font-weight: 100;
 }
 
+/* Original footer nav links - adding a more specific selector */
+footer nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}
+
+/* eliminando padding */
+.social-icons a {
+    padding: 0; /* aseguramos que el padding no afecte a los iconos */
+    color: white;
+    text-decoration: none;
+}
+
+/* estilos para los iconos */
+.social-icons {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    margin: 0 10px;
+    background-image: url('img/social-sprites.png');
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+/* posiciones de iconos */
+.icon-whatsapp {
+    background-position: 0 0;
+}
+
+.icon-email {
+    background-position: -72px 0;
+}
+
+.icon-instagram {
+    background-position: -144px 0;
+}
+
+.icon-facebook {
+    background-position: -216px 0;
+}
 /* 04-productos lista búsqueda */
 
 .main-04, .main-05,.main-06 {
