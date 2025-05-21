@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-josefin-sans: 'Josefin Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-josefin-sans);
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-black text-white py-2 px-6 rounded hover:bg-gray-800 transition-colors;
+  }
+  
+  .social-icon {
+    @apply inline-block w-16 h-16 mx-2;
+    background-image: url('/icons/social-sprites.png');
+  }
+  
+  .icon-whatsapp {
+    background-position: 0 0;
+  }
+  
+  .icon-email {
+    background-position: -64px 0;
+  }
+  
+  .icon-instagram {
+    background-position: -128px 0;
+  }
+  
+  .icon-facebook {
+    background-position: -192px 0;
+  }
+} 
