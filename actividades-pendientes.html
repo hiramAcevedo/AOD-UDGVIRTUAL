@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOD - Actividades Realizadas</title>
+    <meta name="author" content="Hiram Agustín Acevedo López">
+    <meta name="description" content="AOD - Actividades realizadas de optimización de imágenes.">
+    <link rel="icon" type="image/jpg" href="img/AODv2.png">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .actividades-hero {
+            background-color: #8860D0;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .actividades-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .actividades-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .actividades-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .mensaje-profesora {
+            background-color: #f9f4ff;
+            border-left: 5px solid #8860D0;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+        
+        .mensaje-profesora h2 {
+            color: #8860D0;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .mensaje-profesora p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .actividades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .actividad-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .actividad-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .actividad-header {
+            background-color: #8860D0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .actividad-header h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .actividad-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .actividad-icon {
+            font-size: 4rem;
+            color: #8860D0;
+            margin-bottom: 15px;
+        }
+        
+        .actividad-description {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .btn-preview {
+            display: inline-block;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 10px 15px;
+            margin-right: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            background-color: #8860D0;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-download:hover, .btn-preview:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-download:hover {
+            background-color: #7044c4;
+        }
+        
+        .btn-preview:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: 50px auto;
+            padding: 0;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .close-modal:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .pdf-container {
+            width: 100%;
+            height: 70vh;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .actividades-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .actividad-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-preview, .btn-download {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-header">
+            <div class="main-logo">
+                <a href="index.html" class="main-logo-a"><h1>AOD</h1></a>
+            </div>
+
+            <div class="busqueda-header">
+                <i class="fa-solid fa-magnifying-glass busqueda-icon"></i>
+                <input type="text" class="input-header" placeholder="Buscar productos...">
+            </div>
+
+            <button class="mobile-search-btn" id="mobileSearchBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <button class="mobile-close-btn" id="mobileCloseBtn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <a href="02-productos-general.html" class="nav-link">Productos</a>
+                <a href="07-quienes-somos.html" class="nav-link">Conócenos</a>
+                <a href="04-productos-lista.html" class="nav-link">Blog</a>
+                <a href="actividades-pendientes.html" class="actividades-btn">Actividades Realizadas</a>
+                
+                <div class="mobile-menu-icons">
+                    <a href="06-carrito.html" class="nav-link-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Carrito</span>
+                    </a>
+                    <a href="02-productos-general.html" class="nav-link-icon">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Mi Cuenta</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-header-right">
+                <a href="06-carrito.html" class="carrito-contenedor">
+                    <i class="fa-solid fa-cart-shopping carrito"></i>
+                </a>
+                <a href="02-productos-general.html" class="cuenta">
+                    <i class="fa-solid fa-user cuenta-icon"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Overlay para menú móvil -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- Overlay para búsqueda móvil -->
+    <div class="mobile-search-overlay" id="mobileSearchOverlay">
+        <button class="mobile-search-close" id="mobileSearchClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="mobile-search-container">
+            <input type="text" class="mobile-search-input" placeholder="Buscar productos...">
+        </div>
+    </div>
+    
+    <main>
+        <section class="actividades-hero">
+            <h1>Actividades de Optimización de Imágenes</h1>
+            <p>Colección de trabajos realizados para el módulo de Optimización de Imágenes</p>
+        </section>
+        
+        <div class="actividades-container">
+            <div class="mensaje-profesora">
+                <h2>Estimada Profesora:</h2>
+                <p>He completado todas las actividades solicitadas en el módulo de Optimización de Imágenes, aunque algunas de ellas fuera del plazo establecido debido a circunstancias personales. Sin embargo, me he esforzado por realizar un trabajo de calidad y aplicar todos los conocimientos adquiridos durante el curso.</p>
+                <p>En esta página encontrará todas las actividades organizadas para su fácil revisión. Puede visualizar cada PDF directamente en el navegador o descargarlos para una revisión más detallada. También está disponible el archivo ZIP con todos los materiales completos.</p>
+                <p>Agradezco enormemente su comprensión y la oportunidad de presentar este trabajo.</p>
+            </div>
+            
+            <div class="actividades-grid">
+                <div class="actividad-card">
+                    <div class="actividad-header">
+                        <h3>Actividad 1</h3>
+                    </div>
+                    <div class="actividad-content">
+                        <div class="actividad-icon">
+                            <i class="fa-solid fa-image"></i>
+                        </div>
+                        <h4>Optimización y Compresión</h4>
+                        <p class="actividad-description">Conceptos y técnicas fundamentales para la optimización de imágenes web.</p>
+                        <div class="actividad-buttons">
+                            <a href="#" class="btn-preview" onclick="openPdfModal('optimizacionIMG/U3Act1OptComIMGVF.pdf')">
+                                <i class="fa-solid fa-eye"></i> Visualizar
+                            </a>
+                            <a href="optimizacionIMG/U3Act1OptComIMGVF.pdf" class="btn-download" download>
+                                <i class="fa-solid fa-download"></i> Descargar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="actividad-card">
+                    <div class="actividad-header">
+                        <h3>Actividad 2</h3>
+                    </div>
+                    <div class="actividad-content">
+                        <div class="actividad-icon">
+                            <i class="fa-solid fa-crop"></i>
+                        </div>
+                        <h4>Ajustes y Escalamiento</h4>
+                        <p class="actividad-description">Técnicas avanzadas para el escalamiento y ajuste de imágenes para web.</p>
+                        <div class="actividad-buttons">
+                            <a href="#" class="btn-preview" onclick="openPdfModal('optimizacionIMG/U3Act2AjustesEscalamientoVF.pdf')">
+                                <i class="fa-solid fa-eye"></i> Visualizar
+                            </a>
+                            <a href="optimizacionIMG/U3Act2AjustesEscalamientoVF.pdf" class="btn-download" download>
+                                <i class="fa-solid fa-download"></i> Descargar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="actividad-card">
+                    <div class="actividad-header">
+                        <h3>Actividad 3</h3>
+                    </div>
+                    <div class="actividad-content">
+                        <div class="actividad-icon">
+                            <i class="fa-solid fa-file-image"></i>
+                        </div>
+                        <h4>Formatos de Compresión</h4>
+                        <p class="actividad-description">Análisis y aplicación de formatos de compresión modernos para web.</p>
+                        <div class="actividad-buttons">
+                            <a href="#" class="btn-preview" onclick="openPdfModal('optimizacionIMG/U3Act3FormatosCompresionVF.pdf')">
+                                <i class="fa-solid fa-eye"></i> Visualizar
+                            </a>
+                            <a href="optimizacionIMG/U3Act3FormatosCompresionVF.pdf" class="btn-download" download>
+                                <i class="fa-solid fa-download"></i> Descargar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="actividad-card">
+                    <div class="actividad-header">
+                        <h3>Actividad Integradora</h3>
+                    </div>
+                    <div class="actividad-content">
+                        <div class="actividad-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h4>Proyecto Final</h4>
+                        <p class="actividad-description">Aplicación práctica de todas las técnicas de optimización a un proyecto web.</p>
+                        <div class="actividad-buttons">
+                            <a href="#" class="btn-preview" onclick="openPdfModal('optimizacionIMG/U3ActIntOptimizacionIMG_WebVF.pdf')">
+                                <i class="fa-solid fa-eye"></i> Visualizar
+                            </a>
+                            <a href="optimizacionIMG/U3ActIntOptimizacionIMG_WebVF.pdf" class="btn-download" download>
+                                <i class="fa-solid fa-download"></i> Descargar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="actividad-card">
+                    <div class="actividad-header">
+                        <h3>Archivos Completos</h3>
+                    </div>
+                    <div class="actividad-content">
+                        <div class="actividad-icon">
+                            <i class="fa-solid fa-file-zipper"></i>
+                        </div>
+                        <h4>Paquete Completo</h4>
+                        <p class="actividad-description">Descargue todos los archivos y materiales en un solo paquete comprimido.</p>
+                        <div class="actividad-buttons">
+                            <a href="optimizacionIMG/U3ActIntOptimizacionIMG_WebVF.zip" class="btn-download" download>
+                                <i class="fa-solid fa-download"></i> Descargar ZIP
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para visualizar PDFs -->
+        <div id="pdfModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closePdfModal()">&times;</span>
+                <iframe id="pdfViewer" class="pdf-container" src=""></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="02-productos-general.html">Productos</a>
+            <a href="04-productos-lista.html">Lista</a>
+            <a href="05-producto-compra.html">Compra</a>
+            <a href="06-carrito.html">Carrito</a>
+            <a href="07-quienes-somos.html">Conócenos</a>
+        </nav>
+        
+        <div class="social-icons">
+            <a href="https://web.whatsapp.com/" target="_blank" class="social-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:contacto@aod.com" class="social-icon">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+        </div>
+        
+        <p>AOD | All Office Design | INTEGRADORA |</p>
+        <p>© Copyright Hiram Agustín Acevedo López - 2024</p>
+    </footer> 
+    
+    <!-- Botón Volver Arriba -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        // Script para el botón de volver arriba
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Modal de visualización de PDF
+        const modal = document.getElementById("pdfModal");
+        const pdfViewer = document.getElementById("pdfViewer");
+        
+        function openPdfModal(pdfPath) {
+            modal.style.display = "block";
+            pdfViewer.src = pdfPath;
+        }
+        
+        function closePdfModal() {
+            modal.style.display = "none";
+            pdfViewer.src = "";
+        }
+        
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closePdfModal();
+            }
+        }
+
+        // Script para el menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        if (mobileMenuBtn && mobileCloseBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
+            });
+
+            mobileCloseBtn.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restaurar scroll
+            });
+
+            // Cerrar menú al hacer clic en el overlay
+            menuOverlay.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Cerrar menú al hacer clic fuera de él
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && 
+                    !navLinks.contains(e.target) && 
+                    e.target !== mobileMenuBtn &&
+                    !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            const navLinksItems = navLinks.querySelectorAll('a');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Script para el botón de búsqueda móvil
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        const mobileSearchOverlay = document.getElementById('mobileSearchOverlay');
+        const mobileSearchClose = document.getElementById('mobileSearchClose');
+        const mobileSearchInput = document.querySelector('.mobile-search-input');
+
+        if (mobileSearchBtn && mobileSearchOverlay && mobileSearchClose) {
+            mobileSearchBtn.addEventListener('click', () => {
+                mobileSearchOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                // Focus en el campo de búsqueda después de un pequeño delay para la animación
+                setTimeout(() => {
+                    mobileSearchInput.focus();
+                }, 300);
+            });
+
+            mobileSearchClose.addEventListener('click', () => {
+                mobileSearchOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+    </script>
+</body>
+</html> 

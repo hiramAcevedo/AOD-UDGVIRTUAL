@@ -26,10 +26,33 @@
                 <input type="text" class="input-header" placeholder="Buscar productos...">
             </div>
 
-            <div class="nav-links">
+            <button class="mobile-search-btn" id="mobileSearchBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <button class="mobile-close-btn" id="mobileCloseBtn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
                 <a href="02-productos-general.html" class="nav-link">Productos</a>
                 <a href="07-quienes-somos.html" class="nav-link">Conócenos</a>
                 <a href="04-productos-lista.html" class="nav-link">Blog</a>
+                <a href="actividades-pendientes.html" class="actividades-btn">Actividades Realizadas</a>
+                
+                <div class="mobile-menu-icons">
+                    <a href="06-carrito.html" class="nav-link-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Carrito</span>
+                    </a>
+                    <a href="02-productos-general.html" class="nav-link-icon">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Mi Cuenta</span>
+                    </a>
+                </div>
             </div>
             
             <div class="nav-header-right">
@@ -42,6 +65,19 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Overlay para menú móvil -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- Overlay para búsqueda móvil -->
+    <div class="mobile-search-overlay" id="mobileSearchOverlay">
+        <button class="mobile-search-close" id="mobileSearchClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="mobile-search-container">
+            <input type="text" class="mobile-search-input" placeholder="Buscar productos...">
+        </div>
+    </div>
     
     <main>
         <!-- Banner principal con nueva imagen -->
@@ -297,6 +333,77 @@
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // Script para el menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        if (mobileMenuBtn && mobileCloseBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
+            });
+
+            mobileCloseBtn.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restaurar scroll
+            });
+
+            // Cerrar menú al hacer clic en el overlay
+            menuOverlay.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Cerrar menú al hacer clic fuera de él
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && 
+                    !navLinks.contains(e.target) && 
+                    e.target !== mobileMenuBtn &&
+                    !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            const navLinksItems = navLinks.querySelectorAll('a');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Script para el botón de búsqueda móvil
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        const mobileSearchOverlay = document.getElementById('mobileSearchOverlay');
+        const mobileSearchClose = document.getElementById('mobileSearchClose');
+        const mobileSearchInput = document.querySelector('.mobile-search-input');
+
+        if (mobileSearchBtn && mobileSearchOverlay && mobileSearchClose) {
+            mobileSearchBtn.addEventListener('click', () => {
+                mobileSearchOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                // Focus en el campo de búsqueda después de un pequeño delay para la animación
+                setTimeout(() => {
+                    mobileSearchInput.focus();
+                }, 300);
+            });
+
+            mobileSearchClose.addEventListener('click', () => {
+                mobileSearchOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
     </script>
 </body>
 </html>
