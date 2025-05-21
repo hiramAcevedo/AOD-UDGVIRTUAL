@@ -1,3 +1,3 @@
 Github: https://github.com/hiramAcevedo/AOD-UDGVIRTUAL/tree/migracion-nextjs
 Despliegue 1 HTML antiguo con cambio de imagenes: https://hiramacevedo.github.io/AOD-UDGVIRTUAL/
-Despliegue 2 Vercel diseño mejorado con nuevas imagenes: 
+Despliegue 2 Vercel diseño mejorado con nuevas imagenes: https://aod-udgvirtual.vercel.app/
