@@ -3,66 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AOD - All Office Design</title>
     <meta name="author" content="Hiram Agustín Acevedo López">
-    <meta name="description" content="Index - Página principal del sitio.">
+    <meta name="description" content="AOD - Mobiliario de oficina de alta calidad y diseño moderno.">
     <link rel="icon" type="image/jpg" href="img/AODv2.png">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav class="nav-header">
-            
-            <li class="main-logo">
+            <div class="main-logo">
                 <a href="index.html" class="main-logo-a"><h1>AOD</h1></a>
-            </li>
+            </div>
+
+            <div class="busqueda-header">
+                <i class="fa-solid fa-magnifying-glass busqueda-icon"></i>
+                <input type="text" class="input-header" placeholder="Buscar productos...">
+            </div>
+
+            <div class="nav-links">
+                <a href="02-productos-general.html" class="nav-link">Productos</a>
+                <a href="07-quienes-somos.html" class="nav-link">Conócenos</a>
+                <a href="04-productos-lista.html" class="nav-link">Blog</a>
+            </div>
             
             <div class="nav-header-right">
-                <li class="busqueda-header">
-                    <input type="text" class="input-header">
-                    <a href="04-productos-lista.html" class="busqueda-icon-a"><img src="img/header/search.png" alt="icono de búsqueda" class="busqueda-icon"></a>
-                </li>
-                <li class="cuenta">
-                    <a href="02-productos-general.html"><img src="img/header/cuenta.png" alt="icono de persona lleva a la cuenta (página no disponible en este prototipo) "></a>
-                </li>
-
-                <a href="02-productos-general.html">Productos</a>
-                <a href="07-quienes-somos.html">Conócenos</a>
-                <a href="04-productos-lista.html" class="blog-header">Blog</a>
-                <a href="06-carrito.html"><img src="img/header/carrito.png" alt="Imagen de un carrito de compra" class="carrito"></a>
+                <a href="06-carrito.html" class="carrito-contenedor">
+                    <i class="fa-solid fa-cart-shopping carrito"></i>
+                </a>
+                <a href="02-productos-general.html" class="cuenta">
+                    <i class="fa-solid fa-user cuenta-icon"></i>
+                </a>
             </div>
         </nav>
     </header>
+    
     <main>
+        <!-- Banner principal con nueva imagen -->
+        <section class="hero-section">
+            <a href="02-productos-general.html">
+                <div class="imagen-principal">
+                    <div class="hero-content">
+                        <h2 class="hero-title">Diseño de oficina de alto nivel</h2>
+                        <p class="hero-subtitle">Mobiliario ergonómico que eleva la productividad</p>
+                        <button class="hero-button">Explorar colección</button>
+                    </div>
+                </div>
+            </a>
+        </section>
 
-        <a href="02-productos-general.html"><div class="imagen-principal"></div></a>
+        <!-- Categorías de productos con nuevas imágenes -->
+        <section class="categorias-section">
+            <div class="section-header">
+                <h2 class="section-title">Nuestras Categorías</h2>
+                <p class="section-subtitle">Encuentra el mobiliario perfecto para transformar tu espacio de trabajo</p>
+            </div>
+            
+            <div class="productos-home">
+                <ul>
+                    <li>
+                        <a href="03-productos-individual.html">
+                            <div class="categoria-card">
+                                <img src="img/nuevas-fotos/2_CatSillas.webp" alt="Sillas de oficina ergonómicas" class="img-home-1">
+                                <h2>Sillas</h2>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="03-productos-individual.html">
+                            <div class="categoria-card">
+                                <img src="img/nuevas-fotos/3_CatEscritorio.webp" alt="Escritorios modernos" class="img-home-2">
+                                <h2>Escritorios</h2>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="03-productos-individual.html">
+                            <div class="categoria-card">
+                                <img src="img/nuevas-fotos/4_CatMesas.webp" alt="Mesas para oficina" class="img-home-3">
+                                <h2>Mesas</h2>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="03-productos-individual.html">
+                            <div class="categoria-card">
+                                <img src="img/nuevas-fotos/5_CatAlmacenamiento.webp" alt="Muebles de almacenamiento" class="img-home-4">
+                                <h2>Almacenamiento</h2>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-        <div class="productos-home">
-            <ul>
-                <li>
-                    <a href="03-productos-individual.html"><img src="img/home-img/01-silla.webp" alt="Una silla elegante blanca" class="img-home-1">
-                    <h2>Sillas</h2></a>
-                </li>
-                <li>
-                    <a href="03-productos-individual.html"><img src="img/home-img/01-escritorio.webp" alt="Mesa de madera larga" class="img-home-2">
-                    <h2>Escritorios</h2></a>
-                </li>
-                <li>
-                    <a href="03-productos-individual.html"><img src="img/home-img/01-mesas.webp" alt="Mesa pequeña de madera cuadrada" class="img-home-3">
-                    <h2>Mesas</h2></a>
-                </li>
-                <li>
-                    <a href="03-productos-individual.html"><img src="img/home-img/01-almacenamiento.webp" alt="Mueble de almacenamiento" class="img-home-4">
-                    <h2>Almacenamiento+</h2></a>
-                </li>
-            </ul>
-        </div>
+        <!-- Nueva sección de Diseño y Desarrollo -->
+        <section class="diseno-desarrollo-section">
+            <div class="diseno-content">
+                <div class="diseno-text">
+                    <h2>Diseño y Desarrollo a tu Medida</h2>
+                    <p>Nuestro equipo de expertos trabaja para crear soluciones que se adapten perfectamente a las necesidades de tu espacio de trabajo. Combinamos estética, ergonomía y funcionalidad para transformar tu oficina.</p>
+                    <a href="07-quienes-somos.html" class="diseno-button">Conoce nuestro proceso</a>
+                </div>
+                <div class="diseno-image">
+                    <img src="img/nuevas-fotos/7_DiseñoDesarrollo.webp" alt="Proceso de diseño y desarrollo">
+                </div>
+            </div>
+        </section>
 
+        <!-- Nueva sección de Producto Destacado -->
+        <section class="producto-destacado-section">
+            <div class="destacado-container">
+                <div class="destacado-image">
+                    <img src="img/nuevas-fotos/8_ProductoPre.webp" alt="Producto destacado">
+                </div>
+                <div class="destacado-content">
+                    <h2>Nuestro producto más vendido</h2>
+                    <p>Descubre por qué nuestras sillas ergonómicas han sido la elección preferida para espacios de trabajo modernos.</p>
+                    <a href="03-productos-individual.html" class="destacado-button">Ver colección</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nueva sección para Categorías Principales -->
+        <section class="categorias-principales-section">
+            <div class="categorias-principales-header">
+                <h2>Diseño y Funcionalidad</h2>
+                <p>Mobiliario que combina estética moderna con ergonomía para crear espacios de trabajo productivos</p>
+            </div>
+            <div class="categorias-principales-container">
+                <div class="categoria-principal">
+                    <img src="img/nuevas-fotos/9_PortadaCat.webp" alt="Categorías principales de mobiliario">
+                    <div class="categoria-principal-content">
+                        <h3>Catálogo Completo</h3>
+                        <p>Explora nuestra amplia selección de productos para equipar tu oficina con lo mejor en diseño y ergonomía.</p>
+                        <a href="02-productos-general.html" class="categoria-button">Ver catálogo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nueva sección para Sillas Ergonómicas -->
+        <section class="sillas-section">
+            <div class="sillas-container">
+                <div class="sillas-content">
+                    <h2>Sillas Ergonómicas Premium</h2>
+                    <p>Nuestras sillas están diseñadas para proporcionar el máximo confort durante largas jornadas de trabajo, cuidando tu salud y mejorando tu productividad.</p>
+                    <ul class="sillas-features">
+                        <li><i class="fa-solid fa-check"></i> Diseño ergonómico</li>
+                        <li><i class="fa-solid fa-check"></i> Materiales de alta calidad</li>
+                        <li><i class="fa-solid fa-check"></i> Ajustes personalizables</li>
+                    </ul>
+                    <a href="03-productos-individual.html" class="sillas-button">Descubrir modelos</a>
+                </div>
+                <div class="sillas-image">
+                    <img src="img/nuevas-fotos/10_PortadaSeccionSillas.webp" alt="Sillas ergonómicas premium">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nueva sección Call to Action -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2>¿Necesitas un proyecto personalizado?</h2>
+                <p>Nuestros expertos están listos para ayudarte a crear el espacio de trabajo perfecto para tu empresa</p>
+                <div class="cta-buttons">
+                    <a href="07-quienes-somos.html" class="cta-button primary">Contáctanos</a>
+                    <a href="02-productos-general.html" class="cta-button secondary">Ver catálogo</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nueva sección de Testimonios -->
+        <section class="testimonios-section">
+            <div class="section-header">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">Experiencias reales de quienes han confiado en nosotros</p>
+            </div>
+            <div class="testimonios-container">
+                <div class="testimonio-card">
+                    <div class="testimonio-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonio-text">"Las sillas ergonómicas de AOD transformaron nuestra oficina. El equipo notó una mejora inmediata en su comodidad y productividad."</p>
+                    <div class="testimonio-autor">
+                        <div class="testimonio-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="testimonio-info">
+                            <h4>Laura Méndez</h4>
+                            <p>Directora de Recursos Humanos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card">
+                    <div class="testimonio-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonio-text">"El servicio de diseño personalizado superó nuestras expectativas. Ahora tenemos un espacio que refleja perfectamente nuestra cultura empresarial."</p>
+                    <div class="testimonio-autor">
+                        <div class="testimonio-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="testimonio-info">
+                            <h4>Carlos Ramírez</h4>
+                            <p>CEO de TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card">
+                    <div class="testimonio-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="testimonio-text">"La calidad de los escritorios ajustables es excepcional. Una inversión que ha mejorado significativamente el bienestar de nuestros empleados."</p>
+                    <div class="testimonio-autor">
+                        <div class="testimonio-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="testimonio-info">
+                            <h4>María Fernández</h4>
+                            <p>Gerente de Operaciones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
         <nav>
             <a href="index.html">Home</a>
@@ -73,17 +257,46 @@
             <a href="07-quienes-somos.html">Conócenos</a>
         </nav>
         
-        <!-- Insert social icons here -->
         <div class="social-icons">
-            <a href="https://web.whatsapp.com/" target="_blank" class="social-icon icon-whatsapp" title="WhatsApp"></a>
-            <a href="https://www.gmail.com/" class="social-icon icon-email" title="Email"></a>
-            <a href="https://www.instagram.com" target="_blank" class="social-icon icon-instagram" title="Instagram"></a>
-            <a href="https://www.facebook.com" target="_blank" class="social-icon icon-facebook" title="Facebook"></a>
+            <a href="https://web.whatsapp.com/" target="_blank" class="social-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:contacto@aod.com" class="social-icon">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
         </div>
         
         <p>AOD | All Office Design | INTEGRADORA |</p>
         <p>© Copyright Hiram Agustín Acevedo López - 2024</p>
-
     </footer> 
+    
+    <!-- Botón Volver Arriba -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        // Script para el botón de volver arriba
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
